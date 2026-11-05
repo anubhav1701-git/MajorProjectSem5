@@ -157,8 +157,9 @@ Render – Backend hosting
 
 Vercel – Frontend hosting
 
-📂 Project Structure
+## 📂 Project Structure
 
+```text
 DrugMoleculePropPrediction/
 │
 ├── backend/
@@ -188,7 +189,7 @@ DrugMoleculePropPrediction/
 ├── model_comparison.png
 ├── requirements.txt
 └── README.md
-
+```
 ⚙️ Installation and Setup
 
 1. Clone the Repository
