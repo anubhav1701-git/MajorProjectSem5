@@ -12,6 +12,9 @@ import {
   Tooltip
 } from "recharts";
 
+// Deployed FastAPI backend
+const API_URL = "https://drungmoleculepredictionai.onrender.com";
+
 function App() {
   const [smiles, setSmiles] = useState("CCO");
   const [result, setResult] = useState(null);
@@ -34,32 +37,34 @@ function App() {
     MolecularWeight: "Molecular Weight (≤ 500)",
     LogP: "LogP (≤ 5)",
     HydrogenBondDonors: "H-Bond Donors (≤ 5)",
-    HydrogenBondAcceptors: "H-Bond Acceptors (≤ 10)",
+    HydrogenBondAcceptors: "H-Bond Acceptors (≤ 10)"
   };
 
   // Predict molecule
   const predictMolecule = async () => {
+    if (!smiles.trim()) {
+      setError("Please enter a valid SMILES string.");
+      return;
+    }
+
     setLoading(true);
     setError("");
     setResult(null);
 
     try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/predict",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ smiles }),
-        }
-      );
+      const response = await fetch(`${API_URL}/predict`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ smiles: smiles.trim() })
+      });
 
       const data = await response.json();
 
       if (!response.ok) {
         throw new Error(
-          data.detail || "Prediction failed"
+          data.detail || "Prediction failed. Please try again."
         );
       }
 
@@ -90,7 +95,11 @@ function App() {
       });
 
     } catch (err) {
-      setError(err.message);
+      setError(
+        err.message === "Failed to fetch"
+          ? "Unable to connect to the prediction server. Please try again."
+          : err.message
+      );
     } finally {
       setLoading(false);
     }
@@ -101,6 +110,11 @@ function App() {
     setHistory([]);
     localStorage.removeItem("predictionHistory");
   };
+
+  // Molecule visualization URL
+  const moleculeImageURL = result
+    ? `${API_URL}/visualize?smiles=${encodeURIComponent(result.smiles)}`
+    : "";
 
   return (
     <div className="app">
@@ -174,9 +188,7 @@ function App() {
               <h2>2D Molecule Structure</h2>
 
               <img
-                src={`http://127.0.0.1:8000/visualize?smiles=${encodeURIComponent(
-                  result.smiles
-                )}`}
+                src={moleculeImageURL}
                 alt="2D molecular structure"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
@@ -225,13 +237,11 @@ function App() {
                 result.lipinski_analysis.rules
               ).map(([name, passed]) => (
                 <div className="descriptor" key={name}>
-                  <p>{lipinskiLabels[name]}</p>
+                  <p>{lipinskiLabels[name] || name}</p>
 
                   <h3
                     style={{
-                      color: passed
-                        ? "#22c55e"
-                        : "#ef4444"
+                      color: passed ? "#22c55e" : "#ef4444"
                     }}
                   >
                     {passed ? "✓ PASS" : "✗ FAIL"}
@@ -243,11 +253,10 @@ function App() {
           </section>
         )}
 
-        {/* STEP 11: HISTORY AND CHARTS */}
+        {/* Prediction History and Charts */}
         {history.length > 0 && (
           <section className="results">
 
-            {/* Solubility Chart */}
             <h2>Solubility Prediction Chart</h2>
 
             <div className="prediction-card">
@@ -302,7 +311,6 @@ function App() {
             <div className="prediction-card">
 
               <div style={{ overflowX: "auto" }}>
-
                 <table
                   style={{
                     width: "100%",
@@ -310,7 +318,6 @@ function App() {
                     borderCollapse: "collapse"
                   }}
                 >
-
                   <thead>
                     <tr>
                       <th>SMILES</th>
@@ -324,27 +331,15 @@ function App() {
                     {history.map((item) => (
                       <tr key={item.id}>
                         <td>{item.smiles}</td>
-
-                        <td>
-                          {item.solubility}
-                        </td>
-
-                        <td>
-                          {item.violations}
-                        </td>
-
-                        <td>
-                          {item.date}
-                        </td>
+                        <td>{item.solubility}</td>
+                        <td>{item.violations}</td>
+                        <td>{item.date}</td>
                       </tr>
                     ))}
                   </tbody>
-
                 </table>
-
               </div>
 
-              {/* Clear History */}
               <button
                 onClick={clearHistory}
                 style={{
