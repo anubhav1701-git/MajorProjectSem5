@@ -1,0 +1,199 @@
+
+/* Main Application */
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  background: #0b1020;
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  padding: 22px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #27304a;
+}
+
+.navbar h2 {
+  color: #60a5fa;
+}
+
+.navbar span {
+  color: #a5b4fc;
+}
+
+/* Main Container */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tag {
+  color: #60a5fa;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: 38px;
+  margin: 15px 0;
+}
+
+.hero p {
+  color: #aab4ca;
+}
+
+/* Prediction Card */
+.prediction-card {
+  background: #151e32;
+  border: 1px solid #293752;
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.prediction-card h2 {
+  margin-top: 0;
+}
+
+.prediction-card input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  margin: 15px 0;
+  border-radius: 9px;
+  border: 1px solid #42516d;
+  background: #0b1020;
+  color: white;
+  font-size: 16px;
+}
+
+.prediction-card button {
+  padding: 14px 25px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.prediction-card button:hover {
+  background: #1d4ed8;
+}
+
+.prediction-card button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error */
+.error {
+  color: #f87171;
+  margin-top: 15px;
+}
+
+/* Results */
+.results {
+  margin-top: 40px;
+}
+
+.results > h2 {
+  margin-bottom: 20px;
+}
+
+.result-highlight {
+  padding: 25px;
+  border-radius: 15px;
+  background: #172d4b;
+  border: 1px solid #2563eb;
+  margin: 20px 0;
+}
+
+.result-highlight h1 {
+  font-size: 42px;
+  color: #60a5fa;
+}
+
+.result-highlight p {
+  color: #cbd5e1;
+}
+
+/* Molecule Visualization */
+.molecule-visualization {
+  margin: 30px 0;
+  padding: 25px;
+  background: #151e32;
+  border: 1px solid #293752;
+  border-radius: 15px;
+}
+
+.molecule-visualization h2 {
+  margin-bottom: 20px;
+}
+
+.molecule-visualization img {
+  display: block;
+  width: 500px;
+  max-width: 100%;
+  height: auto;
+  background: white;
+  border-radius: 12px;
+  margin: 20px auto;
+}
+
+/* Molecular Descriptors */
+.descriptor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.descriptor {
+  padding: 20px;
+  background: #151e32;
+  border: 1px solid #293752;
+  border-radius: 12px;
+}
+
+.descriptor p {
+  color: #aab4ca;
+}
+
+.descriptor h3 {
+  color: #60a5fa;
+  overflow-wrap: anywhere;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #8492aa;
+}
+
+/* Responsive Design */
+@media (max-width: 650px) {
+  .descriptor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .navbar {
+    padding: 18px;
+  }
+}
