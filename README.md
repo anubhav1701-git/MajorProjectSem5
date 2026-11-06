@@ -1,163 +1,141 @@
-DrugPredict AI – Drug Molecule Property Prediction
-An AI-powered web application that predicts the aqueous solubility of drug-like molecules using Machine Learning, RDKit and molecular descriptors.
+# 🧬 Drug Molecule Property Prediction Using Machine Learning
+
+### An AI-powered platform for molecular property prediction, drug-likeness analysis, and chemical structure visualization.
 
 <p align="center">
-  <strong>Live Demo:</strong> https://moleculemind-ai.vercel.app
-  <br/>
-  <strong>Backend API:</strong> https://drungmoleculepredictionai.onrender.com
-  <br/>
-  <strong>GitHub:</strong> https://github.com/anubhav1701-git/MajorProjectSem5
+  <img src="https://img.shields.io/badge/Python-3.x-blue?logo=python" />
+  <img src="https://img.shields.io/badge/Machine%20Learning-Scikit--learn-orange" />
+  <img src="https://img.shields.io/badge/Backend-FastAPI-green?logo=fastapi" />
+  <img src="https://img.shields.io/badge/Frontend-React-61DAFB?logo=react" />
+  <img src="https://img.shields.io/badge/Cheminformatics-RDKit-purple" />
 </p>
 
-📌 About the Project
+---
 
-DrugPredict AI is a machine learning-based molecular property prediction platform. Users can enter a molecule's SMILES (Simplified Molecular Input Line Entry System) representation and obtain its predicted aqueous solubility.
+## 📌 Overview
 
-The application uses RDKit to process molecular structures and extract chemical descriptors. A trained Random Forest regression model uses these descriptors to predict solubility.
-
-The platform also provides molecular visualization, molecular descriptor analysis, Lipinski Rule of Five screening, and prediction history.
-
-✨ Features
-
-SMILES Input: Enter molecular structures using SMILES notation.
-
-Solubility Prediction: Predict aqueous solubility using a trained Random Forest model.
-
-2D Molecular Visualization: Generate molecular structure images using RDKit.
-
-Molecular Descriptors: Calculate important chemical properties.
-
-Lipinski Rule of Five: Analyze four basic drug-likeness screening criteria.
-
-Prediction History: Store previous predictions in browser local storage.
-
-Interactive Charts: Visualize predicted solubility using Recharts.
-
-REST API: Access prediction and visualization functionality through FastAPI.
-
-🧪 Molecular Descriptors
-
-The model uses eight molecular descriptors:
-
-Descriptor
-
-Description
-
-MolWt
-
-Molecular weight
-
-LogP
-
-Lipophilicity estimate
-
-TPSA
-
-Topological polar surface area
-
-HBD
-
-Hydrogen bond donors
-
-HBA
-
-Hydrogen bond acceptors
-
-RotatableBonds
-
-Number of rotatable bonds
-
-RingCount
-
-Number of rings
-
-HeavyAtoms
-
-Number of non-hydrogen atoms
-
-🤖 Machine Learning Models
-
-Three regression algorithms were trained and evaluated:
-
-Model
-
-MAE
-
-RMSE
-
-R² Score
-
-Linear Regression
-
-0.8076
-
-1.0689
-
-0.7583
-
-Decision Tree
-
-0.7365
-
-1.0908
-
-0.7483
-
-Random Forest
-
-0.5530
-
-0.8053
-
-0.8628
-
-Selected Model: Random Forest Regressor
-
-The Random Forest model achieved the best overall performance among the three evaluated models on the test split.
-
-🛠️ Technology Stack
-
-Machine Learning & Backend
-
-Python
-
-Scikit-learn
-
-RDKit
-
-Pandas
-
-NumPy
-
-Joblib
-
-FastAPI
-
-Uvicorn
-
-Frontend
-
-React.js
-
-Vite
-
-JavaScript
-
-HTML
-
-CSS
-
-Recharts
-
-Deployment & Version Control
-
-Git and GitHub
-
-Render – Backend hosting
-
-Vercel – Frontend hosting
-
-## 📂 Project Structure
+Drug Molecule Property Prediction is a machine learning-based application designed to predict the water solubility of chemical molecules using their SMILES representations.
+
+The system extracts molecular descriptors using RDKit and applies trained machine learning algorithms to estimate molecular solubility.
+
+It also provides molecular structure visualization, Lipinski Rule of Five analysis, prediction history, and interactive data visualization through a React-based dashboard.
+
+The project aims to demonstrate how machine learning and cheminformatics can support early-stage molecular property analysis.
+
+## ✨ Key Features
+
+- **SMILES-Based Prediction:** Enter a molecular SMILES string to predict water solubility.
+- **Molecular Descriptor Extraction:** Calculate molecular weight, LogP, TPSA, hydrogen bond donors, acceptors, and other descriptors.
+- **Machine Learning Models:** Train and compare Linear Regression, Decision Tree, and Random Forest.
+- **Best Model Selection:** Select Random Forest based on evaluation performance.
+- **Molecule Visualization:** Generate 2D molecular structure images using RDKit.
+- **Lipinski Rule of Five:** Evaluate molecular drug-likeness using four Lipinski criteria.
+- **Prediction History:** Save and review previous predictions.
+- **Interactive Charts:** Visualize prediction history and molecular analysis.
+- **FastAPI Backend:** Provide REST API endpoints for molecular prediction.
+
+## 🧠 Machine Learning Approach
+
+### Dataset
+
+The project uses the ESOL (Delaney) dataset for aqueous solubility prediction.
+
+- Dataset: ESOL / Delaney solubility dataset
+- Number of molecules: 1,128
+- Target variable: Experimental Log Solubility (LogS)
+- Input representation: SMILES
+
+### Molecular Descriptors
+
+RDKit is used to extract eight molecular descriptors:
+
+| Descriptor | Description |
+|---|---|
+| MolWt | Molecular weight |
+| LogP | Lipophilicity |
+| TPSA | Topological polar surface area |
+| HBD | Hydrogen bond donors |
+| HBA | Hydrogen bond acceptors |
+| RotatableBonds | Number of rotatable bonds |
+| RingCount | Number of rings |
+| HeavyAtoms | Number of heavy atoms |
+
+### Models Trained
+
+Three machine learning algorithms were evaluated:
+
+1. Linear Regression
+2. Decision Tree Regressor
+3. Random Forest Regressor
+
+### Model Performance
+
+Evaluation results on the project's test split:
+
+| Model | MAE | RMSE | R² Score |
+|---|---:|---:|---:|
+| Linear Regression | 0.8076 | 1.0689 | 0.7583 |
+| Decision Tree | 0.7365 | 1.0908 | 0.7483 |
+| **Random Forest** | **0.5530** | **0.8053** | **0.8628** |
+
+**Selected Model: Random Forest Regressor**
+
+The Random Forest model achieved the best overall performance among the three evaluated models.
+
+## ⚙️ Technology Stack
+
+| Category | Technologies |
+|---|---|
+| Programming Language | Python |
+| Machine Learning | Scikit-learn |
+| Cheminformatics | RDKit |
+| Data Processing | Pandas, NumPy |
+| Backend | FastAPI |
+| Frontend | React.js |
+| Charts | Recharts |
+| Model Storage | Joblib |
+| API Testing | FastAPI Swagger UI |
+| Version Control | Git, GitHub |
+
+## 🏗️ System Architecture
+
+```text
+              USER
+                |
+                v
+       REACT FRONTEND
+                |
+                v
+         FASTAPI BACKEND
+                |
+                v
+        SMILES VALIDATION
+                |
+                v
+       RDKit DESCRIPTOR EXTRACTION
+                |
+                v
+       MOLECULAR FEATURE MATRIX
+                |
+                v
+       RANDOM FOREST MODEL
+                |
+                v
+       SOLUBILITY PREDICTION
+                |
+          +-----+------+
+          |            |
+          v            v
+    LIPINSKI       MOLECULAR
+    ANALYSIS      VISUALIZATION
+          |            |
+          +-----+------+
+                |
+                v
+        RESULTS DASHBOARD
+```
+
+## 📁 Project Structure
 
 ```text
 DrugMoleculePropPrediction/
@@ -177,190 +155,184 @@ DrugMoleculePropPrediction/
 │   │   ├── index.css
 │   │   └── main.jsx
 │   ├── package.json
-│   └── index.html
+│   └── vite.config.js
 │
 ├── drug_solubility_model.pkl
 ├── feature_names.pkl
+├── compare_models.py
 ├── extract_descriptors.py
 ├── train_models.py
-├── compare_models.py
 ├── save_model.py
+├── requirements.txt
 ├── model_comparison.csv
 ├── model_comparison.png
-├── requirements.txt
+├── .gitignore
 └── README.md
 ```
-⚙️ Installation and Setup
 
-1. Clone the Repository
+## 🚀 Installation and Setup
 
+### Prerequisites
+
+- Python 3
+- Node.js and npm
+- Git
+- VS Code (recommended)
+
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/anubhav1701-git/MajorProjectSem5.git
+```
+
+```bash
 cd MajorProjectSem5
+```
 
-2. Create a Python Virtual Environment
+### 2. Create Python Virtual Environment
 
+```bash
 python -m venv venv
+```
 
 Activate it on Windows:
 
+```powershell
 venv\Scripts\activate
+```
 
-3. Install Backend Dependencies
+### 3. Install Python Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-4. Run the FastAPI Backend
+### 4. Start FastAPI Backend
 
-From the project root directory:
+From the project root:
 
+```bash
 uvicorn backend.main:app --reload
+```
 
 Backend URL:
 
+```text
 http://127.0.0.1:8000
+```
 
 API documentation:
 
+```text
 http://127.0.0.1:8000/docs
+```
 
-5. Run the React Frontend
+### 5. Start React Frontend
 
 Open another terminal:
 
+```bash
 cd frontend
+```
+
+Install frontend dependencies:
+
+```bash
 npm install
-npm install recharts
+```
+
+Start the development server:
+
+```bash
 npm run dev
+```
 
 Frontend URL:
 
+```text
 http://localhost:5173
+```
 
-🔗 API Endpoints
+## 🔌 API Endpoints
 
-Method
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/` | Check API status |
+| POST | `/predict` | Predict molecular solubility |
+| GET | `/visualize` | Generate molecular structure image |
 
-Endpoint
+### Example Prediction Request
 
-Description
+**Endpoint:**
 
-GET
-
-/
-
-Check API status
-
-POST
-
-/predict
-
-Predict molecular solubility
-
-GET
-
-/visualize?smiles=CCO
-
-Generate 2D molecular structure
-
-Example Prediction Request
-
-Endpoint:
-
+```text
 POST /predict
+```
 
-Request Body:
+**Request Body:**
 
+```json
 {
   "smiles": "CCO"
 }
+```
 
-The API returns the predicted solubility, molecular descriptors and Lipinski analysis.
+The API returns predicted LogS, molecular descriptors, and Lipinski analysis.
 
-📊 Model Evaluation
+## 🧪 Example Molecule
 
-The models were evaluated using:
+**Ethanol**
 
-MAE (Mean Absolute Error): Measures the average absolute prediction error.
+SMILES:
 
-RMSE (Root Mean Squared Error): Measures prediction error while penalizing larger errors.
+```text
+CCO
+```
 
-R² Score: Measures how well the model explains variation in the target values.
+The system parses the SMILES, extracts molecular descriptors, predicts water solubility, and evaluates Lipinski criteria.
 
-The Random Forest model achieved an R² score of 0.8628 on the evaluated test split.
+## 🔮 Future Enhancements
 
-🚀 Deployment
+The following features are planned for future development:
 
-The project is deployed using two separate platforms:
+- Explainable AI using SHAP.
+- Molecular similarity search using RDKit fingerprints.
+- Molecule Combiner supporting mixture analysis and hybrid molecule generation.
+- Batch prediction for multiple SMILES.
+- Prediction uncertainty and applicability-domain analysis.
+- ADMET property prediction using suitable datasets and trained models.
+- Advanced molecular comparison.
+- Downloadable molecular analysis reports.
 
-Component
+## ⚠️ Limitations and Disclaimer
 
-Platform
+- Predictions are computational estimates and are not experimental measurements.
+- The current model predicts aqueous solubility, not drug efficacy or clinical safety.
+- Lipinski Rule of Five analysis is a drug-likeness screening heuristic, not proof that a molecule is a suitable drug.
+- The model's reliability may be limited for molecules that differ substantially from its training dataset.
+- This project is intended for educational and research purposes, not medical decision-making.
 
-Link
+## 👨‍💻 Developer
 
-Frontend
-
-Vercel
-
-https://moleculemind-ai.vercel.app
-
-Backend
-
-Render
-
-https://drungmoleculepredictionai.onrender.com
-
-API Documentation
-
-FastAPI
-
-https://drungmoleculepredictionai.onrender.com/docs
-
-🔬 Dataset
-
-The project uses the ESOL (Delaney) aqueous solubility dataset.
-
-The dataset contains molecular SMILES representations and experimental solubility values used for machine learning development and evaluation.
-
-🔮 Future Enhancements
-
-Explainable AI using SHAP.
-
-Molecular similarity search using RDKit fingerprints.
-
-Prediction uncertainty and applicability domain analysis.
-
-Batch prediction through CSV uploads.
-
-Comparison of multiple molecular structures.
-
-Downloadable prediction reports.
-
-Evaluation on additional external datasets.
-
-⚠️ Limitations and Disclaimer
-
-This project is an academic machine learning application for molecular aqueous solubility prediction.
-
-Predicted solubility is an estimate, not an experimental measurement.
-
-Lipinski Rule of Five screening does not establish drug safety or effectiveness.
-
-The model is not intended for clinical decisions, medical advice or drug development decisions without further scientific validation.
-
-👨‍💻 Author
-
-Anubhav Tripathi
+**Anubhav Tripathi**
 
 B.Tech – Computer Science Engineering (AI & ML)
 
 IILM University, Greater Noida
 
-GitHub: https://github.com/anubhav1701-git
+**Areas of Interest:**
+- Machine Learning
+- Artificial Intelligence
+- Drug Discovery
+- Data Science
+- Cheminformatics
 
-<p align="center">
-  <strong>DrugPredict AI</strong>
-  <br/>
-  Machine Learning + Chemistry + Innovation
-</p>
+## 🔗 Project Links
 
+- **GitHub Repository:** https://github.com/anubhav1701-git/MajorProjectSem5
+
+---
+
+⭐ If you find this project interesting, consider giving the repository a star!
+
+**Built with Python, Machine Learning, RDKit, FastAPI and React.**
