@@ -1,13 +1,20 @@
-
+```css
 /* Main Application */
 * {
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #1f2937;
+  font-family: Arial, sans-serif;
+}
+
 .app {
   min-height: 100vh;
-  background: #0b1020;
-  color: white;
+  background: #ffffff;
+  color: #1f2937;
 }
 
 /* Navbar */
@@ -16,15 +23,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #27304a;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .navbar h2 {
-  color: #60a5fa;
+  color: #2563eb;
 }
 
 .navbar span {
-  color: #a5b4fc;
+  color: #64748b;
 }
 
 /* Main Container */
@@ -41,7 +49,7 @@
 }
 
 .tag {
-  color: #60a5fa;
+  color: #2563eb;
   letter-spacing: 3px;
   font-weight: bold;
 }
@@ -49,34 +57,41 @@
 .hero h1 {
   font-size: 38px;
   margin: 15px 0;
+  color: #111827;
 }
 
 .hero p {
-  color: #aab4ca;
+  color: #64748b;
 }
 
 /* Prediction Card */
 .prediction-card {
-  background: #151e32;
-  border: 1px solid #293752;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   padding: 30px;
   border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
 }
 
 .prediction-card h2 {
   margin-top: 0;
+  color: #1f2937;
 }
 
 .prediction-card input {
   width: 100%;
-  box-sizing: border-box;
   padding: 16px;
   margin: 15px 0;
   border-radius: 9px;
-  border: 1px solid #42516d;
-  background: #0b1020;
-  color: white;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #1f2937;
   font-size: 16px;
+}
+
+.prediction-card input:focus {
+  outline: none;
+  border-color: #2563eb;
 }
 
 .prediction-card button {
@@ -100,7 +115,7 @@
 
 /* Error */
 .error {
-  color: #f87171;
+  color: #dc2626;
   margin-top: 15px;
 }
 
@@ -111,36 +126,38 @@
 
 .results > h2 {
   margin-bottom: 20px;
+  color: #111827;
 }
 
 .result-highlight {
   padding: 25px;
   border-radius: 15px;
-  background: #172d4b;
-  border: 1px solid #2563eb;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
   margin: 20px 0;
 }
 
 .result-highlight h1 {
   font-size: 42px;
-  color: #60a5fa;
+  color: #2563eb;
 }
 
 .result-highlight p {
-  color: #cbd5e1;
+  color: #475569;
 }
 
 /* Molecule Visualization */
 .molecule-visualization {
   margin: 30px 0;
   padding: 25px;
-  background: #151e32;
-  border: 1px solid #293752;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 15px;
 }
 
 .molecule-visualization h2 {
   margin-bottom: 20px;
+  color: #1f2937;
 }
 
 .molecule-visualization img {
@@ -149,6 +166,7 @@
   max-width: 100%;
   height: auto;
   background: white;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
   margin: 20px auto;
 }
@@ -162,17 +180,17 @@
 
 .descriptor {
   padding: 20px;
-  background: #151e32;
-  border: 1px solid #293752;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
 }
 
 .descriptor p {
-  color: #aab4ca;
+  color: #64748b;
 }
 
 .descriptor h3 {
-  color: #60a5fa;
+  color: #2563eb;
   overflow-wrap: anywhere;
 }
 
@@ -180,7 +198,8 @@
 footer {
   text-align: center;
   padding: 25px;
-  color: #8492aa;
+  color: #64748b;
+  border-top: 1px solid #e5e7eb;
 }
 
 /* Responsive Design */
@@ -197,3 +216,4 @@ footer {
     padding: 18px;
   }
 }
+```
